@@ -1,0 +1,703 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    padding: 4rem 0;
+    position: relative;
+    background: white;
+    margin-top: -80px;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    gap: 6rem;
+    min-height: 80vh;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+    margin-top: 80px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: #e60023;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-red {
+    background: #e60023;
+    color: white;
+}
+
+.btn-purple {
+    background: #5b5fa3;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation Container with Background */
+.hero-animation {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 600px;
+    padding: 2rem;
+    background: transparent;
+    overflow: visible;
+}
+
+/* Fixed background circle size and positioning */
+.hero-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: url('assets/homepage-icons/background') center/cover;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.15;
+}
+
+/* Gradient overlay on the background image */
+.hero-animation::after {
+    content: '';
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-52%, -52%);
+    width: 550px;  /* Increased size */
+    height: 550px; /* Increased size */
+    background: radial-gradient(circle at center, #ED1D23 0%, #02008C 100%);
+    border-radius: 50%;
+    z-index: 1;  /* Behind the phone */
+    opacity: 0.4;
+    filter: blur(45px); /* Soft glow effect */
+}
+
+
+.phone-container {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    transform: rotate(21deg);
+    transform-origin: center;
+    z-index: 3;
+}
+
+.phone {
+    width: 300px;
+    height: 550px;
+    background: #1a1a1a;
+    border-radius: 40px;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    border: 3px solid #2c2c2e;
+    margin-top: 70px;
+}
+
+.phone::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 25px;
+    background: #1a1a1a;
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.screen {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    background: linear-gradient(135deg, #1c1c1e 0%, #2c2c2e 100%);
+    position: relative;
+    border-radius: 37px;
+    overflow: hidden;
+    margin: 3px;
+}
+
+.status-bar {
+    height: 50px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    z-index: 5;
+    margin-top: 10px;
+}
+
+.time {
+    font-weight: 700;
+}
+
+.battery {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.wallpaper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.wallpaper-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.towing-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: 2;
+}
+
+.logo {
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.towing-icon {
+    font-size: 48px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Incoming Call Notification */
+.incoming-call {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    right: 20px;
+    background: rgba(40, 40, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 16px;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100px) scale(0.8);
+    z-index: 100;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.call-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.caller-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+}
+
+.caller-details {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.caller-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.call-status {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.call-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 12px;
+    justify-content: center;
+    color: white;
+}
+
+.call-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.decline-btn {
+    background: #ff3b30;
+    color: white;
+}
+
+.accept-btn {
+    background: #34c759;
+    color: white;
+}
+
+.call-btn:hover {
+    transform: scale(1.1);
+}
+
+.icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Missed Call Notification */
+.missed-call-notification {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    right: 20px;
+    background: rgba(28, 28, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 16px;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100px) scale(0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.phone-icon {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #ff3b30, #ff6b60);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+    color: white;
+}
+
+.notification-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+.notification-time {
+    margin-left: auto;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+.caller-info {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+/* AI Assistant Notification */
+.ai-popup {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    right: 20px;
+    background: rgba(40, 40, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 18px;
+    padding: 16px;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px) scale(0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.ai-avatar {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.ai-title {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ai-subtitle {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.callback-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(52, 199, 89, 0.2);
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.callback-avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+}
+
+.callback-text {
+    flex: 1;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.callback-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #34c759;
+}
+
+/* Animation States */
+.incoming-call.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.missed-call-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.ai-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-content {
+        max-width: 1400px;
+        gap: 4rem;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .hero-text p {
+        font-size: 1.4rem;
+    }
+
+    .phone-container {
+        width: 260px;
+        height: 520px;
+    }
+
+    .phone {
+        width: 260px;
+        height: 520px;
+    }
+
+    .hero-animation::before,
+    .hero-animation::after {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-content {
+        gap: 3rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-text p {
+        font-size: 1.3rem;
+    }
+
+    .phone-container {
+        width: 240px;
+        height: 480px;
+    }
+
+    .phone {
+        width: 240px;
+        height: 480px;
+    }
+
+    .hero-animation::before,
+    .hero-animation::after {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .phone-container {
+        width: 220px;
+        height: 440px;
+        transform: rotate(10deg);
+    }
+
+    .phone {
+        width: 220px;
+        height: 440px;
+    }
+
+    .hero-animation {
+        min-height: 500px;
+    }
+
+    .hero-animation::before,
+    .hero-animation::after {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+
+    .phone-container {
+        width: 200px;
+        height: 400px;
+        transform: rotate(8deg);
+    }
+
+    .phone {
+        width: 200px;
+        height: 400px;
+    }
+
+    .hero-animation::before,
+    .hero-animation::after {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 0 0.5rem;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .phone-container {
+        width: 180px;
+        height: 360px;
+        transform: rotate(5deg);
+    }
+
+    .phone {
+        width: 180px;
+        height: 360px;
+    }
+
+    .hero-animation {
+        min-height: 400px;
+        padding: 1rem;
+    }
+
+    .hero-animation::before,
+    .hero-animation::after {
+        width: 200px;
+        height: 200px;
+    }
+}

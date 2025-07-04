@@ -1,0 +1,570 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/*header */
+.site-header {
+    background: #e5e7eb;
+  padding: 0.5rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed; /* Changed from sticky to fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateY(0);
+}
+
+.site-header.hidden {
+    transform: translateY(-100%);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Increased side padding */
+}
+
+.logo {
+    min-width: 180px; /* Fixed width for logo area */
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.main-nav {
+    flex-grow: 1;
+    margin: 0 2rem; /* Added margin to center nav */
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+     position: relative !important;
+}
+
+.main-nav a.active {
+    color: #e60023 !important;
+}
+
+.main-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #e60023;
+    border-radius: 2px;
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Hover effect for non-active items */
+.main-nav a:not(.active):hover {
+    color: #e60023 !important;
+}
+
+.main-nav a:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e60023;
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+
+
+.header-cta {
+    min-width: 180px; /* Fixed width for CTA area */
+    text-align: right;
+}
+
+.header-cta .btn {
+    background: #e74c3c;
+    color: white;
+  padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+/* footer */
+/* Updated Footer Styles - Single Dark Blue Background */
+.site-footer {
+    background: #1a1a2e;
+    color: white;
+    padding: 0;
+    margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero Section of Footer */
+.footer-hero {
+   padding: 1rem 0;
+    position: relative;
+    z-index: 2;
+    background: #1a1a2e;
+}
+
+.footer-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.footer-hero-text {
+    text-align: left;
+}
+
+.footer-hero-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.footer-hero-text .highlight {
+    color: #e74c3c;
+}
+
+.footer-hero-text p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.footer-right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Footer Image - Reduced Height */
+.footer-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-image img {
+    max-width: 350px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+
+
+/* Phone Input Section - Only dial pad and input field in one line */
+.phone-input-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px; /* Reduced width to match the image */
+    margin: 1rem auto 0; /* Added top margin */
+}
+
+.dialpad-icon {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.dialpad-dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+.phone-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    background: white;
+    color: #2c3e50;
+    outline: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.phone-input::placeholder {
+    color: #7f8c8d;
+}
+
+/* Connect Now button - separate element below */
+.connect-btn-container {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.connect-btn {
+    background: #e74c3c !important; /* Red background */
+    color: white; /* White text color */
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+     border-radius: 8px !important; 
+    min-width: 300px;
+    margin-top: -40px;
+    margin-left: 40px;
+}
+
+.connect-btn:hover {
+    background: #c0392b; /* Darker red on hover */
+    color: white; /* Keep text white on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.connect-btn .arrow {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 0.3rem;
+    transition: transform 0.3s ease;
+    color: white; /* Ensure arrow is white */
+}
+
+.connect-btn:hover .arrow {
+    transform: translateX(3px);
+}
+/* Contact Cards Section */
+.contact-cards {
+  padding: 1rem 0;
+    background: #1a1a2e;
+    position: relative;
+    z-index: 2;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    border-top: 4px solid #e74c3c;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-card .icon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.contact-card h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-card .divider {
+    width: 50px;
+    height: 3px;
+    background: #e74c3c;
+    margin: 1rem auto;
+}
+
+.contact-card p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.contact-card a {
+    color: #7f8c8d;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: #e74c3c;
+}
+.contact-card .icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+/* Social Media and Copyright */
+.footer-bottom {
+    background: #1a1a2e;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+        left: 50%;
+    }
+    to {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .site-header .container {
+        padding: 0 1.5rem;
+    }
+    .main-nav ul {
+        gap: 1.5rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+   .site-header .container {
+        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .logo, .header-cta {
+        min-width: auto;
+        flex: 1;
+    }
+     .logo img {
+        width: 100px;
+    }
+    .main-nav {
+        order: 3;
+        margin: 0;
+        flex: 0 0 100%;
+    }
+    .main-nav ul {
+        justify-content: space-around;
+        gap: 0.5rem;
+    }
+
+    .main-nav a.active::after,
+    .main-nav a:not(.active):hover::after {
+        bottom: -6px;
+    }
+
+
+    .footer-hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-hero-text {
+        text-align: center;
+    }
+
+    .footer-hero-text h2 {
+        font-size: 2rem;
+    }
+
+    .phone-input-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .phone-input-container {
+        flex-direction: column;
+        gap: 0;
+        max-width: 300px;
+        border-radius: 8px;
+    }
+
+    .phone-input {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .connect-btn {
+        border-radius: 0 0 8px 8px;
+        justify-content: center;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-image img {
+        max-width: 80%;
+        height: 150px;
+    }
+
+
+
+
+}
+
+@media (max-width: 480px) {
+
+    .main-nav a {
+        font-size: 0.9rem;
+    }
+    .header-cta .btn {
+        padding: 0.6rem 1rem;
+    }
+
+
+
+
+    .footer-hero {
+        padding: 2rem 0;
+    }
+
+    .footer-hero-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-cards {
+        padding: 2rem 0;
+    }
+
+    .dialpad-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .dialpad-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .footer-image img {
+        height: 120px;
+    }
+
+    .connect-btn {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.5rem;
+         justify-content: center;
+
+    }
+}

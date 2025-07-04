@@ -1,0 +1,356 @@
+/* Business Support Section Styles */
+.business-support-section {
+    padding: 80px 0 20px;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title {
+
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-size: 3rem;
+    font-weight: 700;
+
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -1px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #333;
+    margin-top: -5px;
+    /* moves subtitle slightly upward */
+    margin-bottom: 8px;
+    /* gives a small gap before underline */
+}
+
+
+/* Business Cards Grid */
+.business-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Business Card Styles */
+.business-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.business-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Image Section */
+.card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.business-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.business-underline {
+    width: 300px;
+    height: 4px;
+    background: linear-gradient(90deg, #ED1D23, #02008C);
+    margin: 0 auto 25px;
+    /* extra bottom space if needed */
+    border-radius: 2px;
+}
+
+
+.business-card:hover .business-img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-icon .icon {
+    font-size: 1.8rem;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+/* Card Content */
+.card-content {
+    padding: 30px 25px;
+    color: #333;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Stat Highlight */
+.stat-highlight {
+    background: #f8f9fa;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 25px;
+    border-left: 4px solid;
+}
+
+.towing-card .stat-highlight {
+    border-left-color: #e74c3c;
+}
+
+.locksmith-card .stat-highlight {
+    border-left-color: #f39c12;
+}
+
+.plumbing-card .stat-highlight {
+    border-left-color: #3498db;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.checkmark {
+    color: #27ae60;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* CTA Buttons */
+.cta-button {
+    width: 200px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.towing-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.locksmith-btn {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.plumbing-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+/* Section Footer */
+.section-footer {
+    text-align: center;
+}
+
+.explore-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    /* remove old semi-transparent border */
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+
+.explore-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Specific Card Hover Effects */
+.towing-card:hover {
+    box-shadow: 0 30px 60px rgba(231, 76, 60, 0.2);
+}
+
+.locksmith-card:hover {
+    box-shadow: 0 30px 60px rgba(243, 156, 18, 0.2);
+}
+
+.plumbing-card:hover {
+    box-shadow: 0 30px 60px rgba(52, 152, 219, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .business-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .card-content {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .business-support-section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .business-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-image {
+        height: 180px;
+    }
+
+    .card-content {
+        padding: 20px 18px;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .card-image {
+        height: 160px;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-icon .icon {
+        font-size: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+}

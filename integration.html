@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seamless Integrations</title>
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            /* Background image styling */
+            background-image: url('assets/homepage-icons/heroimage.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Optional: Add overlay for better text readability */
+            /* background-color: rgba(255, 255, 255, 0.95); */
+            background-blend-mode: overlay;
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            color: black;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: black;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section {
+            margin-bottom: 50px;
+
+        }
+
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            /* or center, depending on your design */
+            gap: 16px;
+            /* adds spacing between icon and text */
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            background: #ff4757;
+            color: black;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 16px;
+        }
+
+        .section-title {
+            color: black;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            color: black;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            max-width: 1000px;
+            margin-left: -5px;
+            /* Adjust based on icon width + spacing */
+        }
+
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* aligns content to the left */
+            text-align: left;
+            background: white;
+            border-radius: 12px;
+            padding: 20px 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            /* 🔽 move it to the bottom */
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff4757, #ff6b7a);
+        }
+
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            width: 64px;
+            /* increased from 44px */
+            height: 64px;
+            margin-bottom: 16px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+
+        .card-icon img {
+            width: 40px;
+            /* increased from 28px */
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+            /* Reduced from 8px */
+        }
+
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+            line-height: 1.4;
+        }
+
+        .cta-section {
+            background: linear-gradient(180deg, #0b0108 0%, #3e1333 50%, #5a1e47 100%);
+            border-radius: 24px;
+            padding: 48px 32px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            background: #ff4757;
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #ff3742;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 71, 87, 0.4);
+        }
+
+        .section-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .payment-card {
+            max-width: 240px;
+            width: 100%;
+            margin: 0 auto;
+            /* optional: center it */
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header p {
+                font-size: 16px;
+            }
+
+            .card {
+                height: 180px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 32px 24px;
+            }
+
+            .cta-title {
+                font-size: 24px;
+            }
+
+            .main-content {
+                padding: 20px 10px;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="header">
+                <h1>Seamless Integrations</h1>
+                <p>Connect your favorite tools in a few easy clicks. Streamline your workflow and enhance productivity.
+                    More
+                    integrations are always being added.</p>
+            </div>
+
+            <!-- Phone Connectivity Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="assets/integrationimages/Background+Border+Shadow-5.png" alt="Phone">
+                    </div>
+                    <div>
+                        <div class="section-title">Phone Connectivity</div>
+                        <div class="section-subtitle">Seamlessly connect your communications and make every call count.
+                            Connect with your team in real-time from anywhere.</div>
+                    </div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/phone11.png" alt="Forward">
+                        </div>
+                        <div class="card-title">Forward From Any Phone</div>
+                        <div class="card-subtitle">Route calls efficiently</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/phone12.png" alt="Google Voice">
+                        </div>
+                        <div class="card-title">Google Voice</div>
+                        <div class="card-subtitle">Integrated voice services</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/OpenPhone business phone system integration with Marlie AI phone agents.png"
+                                alt="OpenPhone">
+                        </div>
+                        <div class="card-title">OpenPhone</div>
+                        <div class="card-subtitle">Business phone solution</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Integrations Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="assets/integrationimages/Background+Border+Shadow-3.png" alt="Email">
+                    </div>
+                    <div>
+                        <div class="section-title">Email Integrations</div>
+                        <div class="section-subtitle">Stay connected with all your email platforms in one unified inbox.
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Gmail email service integration with Marlie AI phone agents.png"
+                                alt="Gmail">
+                        </div>
+                        <div class="card-title">Gmail</div>
+                        <div class="card-subtitle">Google email integration</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Microsoft Outlook email integration with Marlie AI phone agents.png"
+                                alt="Outlook">
+                        </div>
+                        <div class="card-title">Outlook</div>
+                        <div class="card-subtitle">Microsoft email platform</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Integrations Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="assets/integrationimages/Background+Border+Shadow-2.png" alt="Calendar">
+                    </div>
+                    <div>
+                        <div class="section-title">Calendar Integrations</div>
+                        <div class="section-subtitle">Sync all your calendars and never miss an important meeting or
+                            deadline.</div>
+                    </div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Google Calendar scheduling integration with Marlie AI phone agents.png"
+                                alt="Google Calendar">
+                        </div>
+                        <div class="card-title">Google Calendar</div>
+                        <div class="card-subtitle">Schedule management</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Calendly scheduling platform integration with Marlie AI phone agents.png"
+                                alt="Calendly">
+                        </div>
+                        <div class="card-title">Calendly</div>
+                        <div class="card-subtitle">Appointment scheduling</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="assets/integrationimages/Background+Border+Shadow-1.png" alt="Notifications">
+                    </div>
+                    <div>
+                        <div class="section-title">Notifications</div>
+                        <div class="section-subtitle">Stay in the loop with integrated notifications from all your
+                            essential
+                            platforms.</div>
+                    </div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Slack messaging platform integration with Marlie AI phone agents.png"
+                                alt="Slack">
+                        </div>
+                        <div class="card-title">Slack</div>
+                        <div class="card-subtitle">Team communication</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Microsoft Teams collaboration platform integration with Marlie AI phone agents.png"
+                                alt="Microsoft Teams">
+                        </div>
+                        <div class="card-title">Microsoft Teams</div>
+                        <div class="card-subtitle">Collaboration platform</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Discord messaging platform integration with Marlie AI phone agents.png"
+                                alt="Discord">
+                        </div>
+                        <div class="card-title">Discord</div>
+                        <div class="card-subtitle">Community chat</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Telegram messaging platform integration with Marlie AI phone agents.png"
+                                alt="Alexa">
+                        </div>
+                        <div class="card-title">Alexa</div>
+                        <div class="card-subtitle">Voice assistant</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/WhatsApp messaging platform integration with Marlie AI phone agents.png"
+                                alt="WhatsApp">
+                        </div>
+                        <div class="card-title">WhatsApp</div>
+                        <div class="card-subtitle">Instant messaging</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Processing Section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <img src="assets/integrationimages/Background+Border+Shadow.png" alt="Payment">
+                    </div>
+                    <div>
+                        <div class="section-title">Payment Processing</div>
+                        <div class="section-subtitle">Seamlessly handle payments and financial transactions directly
+                            from
+                            your phone.</div>
+                    </div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="assets/integrationimages/Stripe payment processing integration with Marlie AI phone agents.png"
+                                alt="Stripe">
+                        </div>
+                        <div class="card-title">Stripe</div>
+                        <div class="card-subtitle"> Streamline your payment collection with integrated payment
+                            processing solutions.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2 class="cta-title">Don't see the integration you need?</h2>
+                    <p class="cta-subtitle">We're constantly expanding our integrations. Let us know what you'd like to
+                        see
+                        next and we'll prioritize it for development.</p>
+                    <a href="#" class="cta-button">Request Integration</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript to load header and footer -->
+    <script>
+        // Load header from index.html
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const header = doc.querySelector('header.site-header');
+                if (header) {
+                    document.getElementById('header-container').innerHTML = header.outerHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading header:', error);
+            });
+
+        // Load footer from index.html
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const footer = doc.querySelector('footer.site-footer');
+                if (footer) {
+                    document.getElementById('footer-container').innerHTML = footer.outerHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading footer:', error);
+            });
+
+        // Header scroll functionality (needs to be added after header loads)
+        setTimeout(() => {
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+            let scrollThreshold = 100;
+
+            if (header) {
+                window.addEventListener('scroll', function () {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    // Add scrolled class after scrolling past threshold
+                    if (scrollTop > scrollThreshold) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+
+                    // Hide/show header based on scroll direction
+                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                        // Scrolling down
+                        header.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up
+                        header.classList.remove('header-hidden');
+                    }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+            }
+        }, 1000); // Wait 1 second for header to load
+    </script>
+</body>
+
+</html>

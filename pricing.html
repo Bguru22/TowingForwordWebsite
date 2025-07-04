@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing - Towing Forward</title>
+    <link rel="stylesheet" href="index.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            /* Background image styling */
+            background-image: url('assets/homepage-icons/heroimage.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Optional: Add overlay for better text readability */
+            /* background-color: rgba(255, 255, 255, 0.95); */
+            background-blend-mode: overlay;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Main Content */
+      .main-content {
+        margin-top: 80px;
+        padding: 4rem 0;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding: 4rem 2rem;
+        
+        /* background-color: #f5f7d2; */
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .hero-section h1:hover {
+        color: linear-gradient(90deg, #ED1D23, #02008C);
+      }
+
+      .hero-section p {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        max-width: 600px;
+        margin: 0 auto;
+        transition: all 0.3s ease;
+        opacity: 1;
+      }
+
+      .hero-underline {
+        height: 3px;
+        background: linear-gradient(90deg, #ED1D23, #02008C);
+        border-radius: 2px;
+        margin: 1rem auto 2rem auto;
+        width: 0;
+        transition: width 0.5s ease;
+      }
+
+      .hero-section h1:hover + .hero-underline {
+        width: 200px;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        margin-bottom: 3rem;
+        margin-top: 1rem;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .pricing-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        border: 1px solid #e5e7eb;
+      }
+
+      .pricing-card.featured {
+        background: white;
+        color: #6b7280;
+        border: 1px solid #ef4444;
+      }
+
+      .plan-type {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #6b7280;
+        margin-bottom: 0.1rem;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .pricing-card.featured .plan-type {
+        color: #6b7280;
+        opacity: 0.8;
+      }
+
+      .plan-name {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 1rem;
+      }
+
+      .pricing-card.featured .plan-name {
+        color: #374151;
+      }
+
+      .plan-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 0.25rem;
+      }
+
+      .pricing-card.featured .plan-price {
+        color: black;
+      }
+
+      .plan-period {
+        font-size: 1rem;
+        color: #6b7280;
+        margin-bottom: 1.5rem;
+      }
+
+      .pricing-card.featured .plan-period {
+        color: #6b7280;
+      }
+
+      .plan-btn {
+        width: 100%;
+        padding: 0.8rem;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 1.5rem;
+        border: 2px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .plan-btn.red {
+        background: white;
+        color: #ef4444;
+        border: 2px solid #ef4444;
+      }
+
+      .plan-btn.red:hover {
+        background: #ef4444;
+        color: white;
+      }
+
+      .plan-btn.white {
+        background: white;
+        color: #ef4444;
+        border: 2px solid #ef4444;
+      }
+
+      .plan-btn.white:hover {
+        background: #ef4444;
+        color: white;
+      }
+
+      .plan-features {
+        list-style: none;
+        text-align: left;
+      }
+
+      .plan-features li {
+        position: relative;
+        padding-left: 2rem;
+        padding-bottom: 0.7rem;
+        font-size: 0.95rem;
+        color: #374151;
+      }
+
+      .pricing-card.featured .plan-features li {
+        color: #374151;
+      }
+
+      .plan-features li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: #ef4444;
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+
+      /* Features Comparison */
+      
+      .features-comparison {
+        background: white;
+        border-radius: 20px;
+        padding: 1rem 4rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1000px;
+        margin: 0 auto 4rem auto;
+      }
+
+      .comparison-title {
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: left;
+        margin-bottom: 2rem;
+        color: black;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 4rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 8px;
+      }
+
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 1rem;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ef4444" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" /><path fill="white" d="M10 14l-2-2-1.41 1.41L10 16.83l7.41-7.41L16 8l-6 6z"/></svg>');
+        background-size: cover;
+        flex-shrink: 0;
+      }
+
+      .feature-text {
+        font-size: 1rem;
+        color: black;
+        font-weight: 500;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background: transparent;
+        padding: 2rem 0;
+        margin-bottom: 4rem;
+      }
+
+      .faq-title {
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+      }
+
+      .faq-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .faq-question {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        transition: color 0.3s ease;
+        margin: 0;
+      }
+
+      .faq-question:hover {
+        color: #6366f1;
+      }
+
+      .faq-icon {
+        font-size: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        color: #7f8c8d;
+        padding: 0 1.5rem;
+       
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 200px;
+        padding: 0 1.5rem 1.5rem 1.5rem;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(to bottom, #000000, #2b0b3d);
+
+        color: white;
+        padding: 4rem;
+        border-radius: 20px;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .cta-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .cta-description {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .cta-button {
+        background: #e74c3c;
+        color: white;
+        padding: 1.2rem 2.5rem;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .cta-button:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-section h1 {
+          font-size: 2.2rem;
+        }
+
+        .plan-price {
+          font-size: 2.5rem;
+        }
+
+        .features-comparison,
+        .faq-section,
+        .cta-section {
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <h1>Never Miss a $130 Call Again.</h1>
+          <div class="hero-underline"></div>
+          <p>
+            Try Towing Forward with a 2 week free trial - no card needed.
+            Capture more business today.
+          </p>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+          <div class="pricing-grid">
+            <!-- Professional Plan -->
+            <div class="pricing-card">
+              <div class="plan-type">PROFESSIONAL</div>
+              <h3 class="plan-name">
+                One captured call usually brings $130 — easily paying for
+                itself.
+              </h3>
+              <div class="plan-price">$49</div>
+              <div class="plan-period">/ Month</div>
+              <button class="plan-btn red">Get Started Now</button>
+              <ul class="plan-features">
+                <li>Up to 250 minutes</li>
+                <li>Then $0.35 per minute</li>
+                <li>Cap of $8.75 per hour</li>
+                <li>Smart spam detection</li>
+              </ul>
+            </div>
+
+            <!-- Scale Plan (Featured) -->
+            <div class="pricing-card featured">
+              <div class="plan-type">SCALE</div>
+              <h3 class="plan-name">
+                Typically generates $13,000+ in potential revenue.
+              </h3>
+              <div class="plan-price">$99</div>
+              <div class="plan-period">/ Month</div>
+              <button class="plan-btn white">Get Started Now</button>
+              <ul class="plan-features">
+                <li>Then $0.30 per minute</li>
+                <li>Message taking with custom questions</li>
+                <li>Smart spam detection</li>
+                <li>Appointment Links</li>
+                <li>Call Transfers</li>
+              </ul>
+            </div>
+
+            <!-- Growth Plan -->
+            <div class="pricing-card">
+              <div class="plan-type">GROWTH</div>
+              <h3 class="plan-name">
+                Built for businesses capturing thousands in new revenue each
+                month.
+              </h3>
+              <div class="plan-price">$199</div>
+              <div class="plan-period">/ Month</div>
+              <button class="plan-btn red">Get Started Now</button>
+              <ul class="plan-features">
+                <li>Then $0.25 per minute</li>
+                <li>Message taking with custom questions</li>
+                <li>Smart spam detection</li>
+                <li>Appointment Links</li>
+                <li>Call Transfers</li>
+                <li>Live Transfers (Coming Soon)</li>
+                <li>Training Files</li>
+                <li>Custom Agent Training</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Comparison -->
+        <section class="features-comparison">
+          <h2 class="comparison-title">All plans include :</h2>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Trained on your business</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Call summaries, transcripts</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">1000+ integrations with other apps</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Custom FAQ and answers</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Custom agent name and greeting</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Choose your area code, if desired</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">
+                Email and text notifications of new calls
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Enterprise-grade data security</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"></div>
+              <div class="feature-text">Available 24/7 with support</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+          <h2 class="faq-title">FAQ</h2>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How long does setup take?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Setup typically takes 24-48 hours. Our team will work with you to
+              configure your account and ensure everything is running smoothly
+              before going live.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my financial data secure?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes, we use enterprise-grade security measures including SSL
+              encryption, secure data centers, and comply with all major
+              security standards to protect your information.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I use this app with my team?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Absolutely! Our platform supports team collaboration with
+              different access levels, shared dashboards, and team management
+              features.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What if I need to change my plan?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              You can upgrade or downgrade your plan at any time. Changes take
+              effect immediately, and billing is prorated accordingly.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Do you offer customer support?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes, we provide 24/7 customer support via phone, email, and live
+              chat. Our dedicated support team is always ready to help you
+              succeed.
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+          <h2 class="cta-title">Don't see the integration you need?</h2>
+          <p class="cta-description">
+            We're constantly expanding our integrations. Let us know what tools
+            are essential for your business, and we'll prioritize building those
+            connections.
+          </p>
+          <a href="#" class="cta-button">Request an Integration</a>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript to load header and footer -->
+    <script>
+      // Load header from index.html
+      fetch("index.html")
+        .then((response) => response.text())
+        .then((html) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, "text/html");
+          const header = doc.querySelector("header.site-header");
+          if (header) {
+            document.getElementById("header-container").innerHTML =
+              header.outerHTML;
+          }
+        })
+        .catch((error) => {
+          console.error("Error loading header:", error);
+        });
+
+      // Load footer from index.html
+      fetch("index.html")
+        .then((response) => response.text())
+        .then((html) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, "text/html");
+          const footer = doc.querySelector("footer.site-footer");
+          if (footer) {
+            document.getElementById("footer-container").innerHTML =
+              footer.outerHTML;
+          }
+        })
+        .catch((error) => {
+          console.error("Error loading footer:", error);
+        });
+
+      // Header scroll functionality (needs to be added after header loads)
+      setTimeout(() => {
+        let lastScrollTop = 0;
+        const header = document.getElementById("main-header");
+        let scrollThreshold = 100;
+
+        if (header) {
+          window.addEventListener("scroll", function () {
+            let scrollTop =
+              window.pageYOffset || document.documentElement.scrollTop;
+
+            // Add scrolled class after scrolling past threshold
+            if (scrollTop > scrollThreshold) {
+              header.classList.add("scrolled");
+            } else {
+              header.classList.remove("scrolled");
+            }
+
+            // Hide/show header based on scroll direction
+            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+              // Scrolling down
+              header.classList.add("header-hidden");
+            } else {
+              // Scrolling up
+              header.classList.remove("header-hidden");
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+          });
+        }
+      }, 1000); // Wait 1 second for header to load
+
+      // FAQ functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+
+          question.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
+
+            // Close all FAQ items
+            faqItems.forEach((faq) => faq.classList.remove("active"));
+
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+              item.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+
+    <!-- Load audio script if needed -->
+    <script src="audio.js"></script>
+  </body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Towing Forward</title>
+    <link rel="stylesheet" href="index.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            /* Background image styling */
+            background-image: url('assets/homepage-icons/heroimage.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Optional: Add overlay for better text readability */
+            /* background-color: rgba(255, 255, 255, 0.95); */
+            background-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem 0;
+            min-height: calc(100vh - 160px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Contact Header */
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color:#5b5fa3;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-header p {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h3 {
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            color: white;
+        }
+
+        /* Schedule Demo Container */
+        .schedule-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            border: 2px solid #e9ecef;
+        }
+
+        .schedule-header {
+            margin-bottom: 2rem;
+        }
+
+        .schedule-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Step 1: Calendar */
+        .calendar-section {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .calendar-container {
+            flex: 1;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #667eea;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .calendar-nav:hover {
+            background: #f8f9fa;
+        }
+
+        .calendar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #666;
+            padding: 0.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day:hover {
+            background: #f0f0f0;
+        }
+
+        .calendar-day.today {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .calendar-day.selected {
+            background: #667eea;
+            color: white;
+        }
+
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .time-slots {
+            flex: 1;
+        }
+
+        .time-duration {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .duration-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e9ecef;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .duration-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .time-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .time-slot {
+            padding: 0.8rem 1rem;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .time-slot:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .time-slot.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        /* Step 2: Form */
+        .form-section {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .phone-input-container {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .country-code {
+            width: 80px;
+            text-align: center;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        /* Step 3: Confirmation */
+        .confirmation-section {
+            display: none;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: #27ae60;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .confirmation-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .confirmation-text {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .meeting-details {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+            width: 150px;
+            flex-shrink: 0;
+        }
+
+        .detail-value {
+            color: #666;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .cal-branding {
+            text-align: center;
+            margin-top: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .calendar-section {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .time-duration {
+                flex-direction: column;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .schedule-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Contact Header -->
+            <div class="contact-header">
+                <h1>Get in Touch</h1>
+                <p>Have questions or need assistance? Our team is ready to help!</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <p>+1 929 272 5383</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>support@TowingForward.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Demo Container -->
+            <div class="schedule-container">
+                <div class="schedule-header">
+                    <h2>Schedule a Demo</h2>
+                </div>
+
+                <!-- Step 1: Calendar Selection -->
+                <div class="calendar-section" id="step1">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="previousMonth()">‹</button>
+                            <div class="calendar-title" id="calendarTitle">July 2025</div>
+                            <button class="calendar-nav" onclick="nextMonth()">›</button>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be generated here -->
+                        </div>
+                    </div>
+
+                    <div class="time-slots">
+                        <div class="time-duration">
+                            <button class="duration-btn active" onclick="selectDuration('12h')">12h</button>
+                            <button class="duration-btn" onclick="selectDuration('24h')">24h</button>
+                        </div>
+                        
+                        <div class="time-list" id="timeList">
+                            <!-- Time slots will be generated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Form -->
+                <div class="form-section" id="step2">
+                    <form id="demoForm">
+                        <div class="form-group">
+                            <label for="userName">Your name <span class="required">*</span></label>
+                            <input type="text" id="userName" name="userName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalNotes">Additional notes</label>
+                            <textarea id="additionalNotes" name="additionalNotes" placeholder="Please share anything that will help prepare for our meeting."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+                            <div class="phone-input-container">
+                                <select class="country-code">
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+91">🇮🇳 +91</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                </select>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number" required>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                            By proceeding, you agree to our <a href="#" style="color: #667eea;">Terms</a> and <a href="#" style="color: #667eea;">Privacy Policy</a>.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Step 3: Confirmation -->
+                <div class="confirmation-section" id="step3">
+                    <div class="success-icon">✓</div>
+                    <h3 class="confirmation-title">This meeting is scheduled</h3>
+                    <p class="confirmation-text">We sent an email with a calendar invitation with the details to everyone.</p>
+                    
+                    <div class="meeting-details" id="meetingDetails">
+                        <!-- Meeting details will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="btn-group">
+                    <button class="btn btn-secondary" id="backBtn" onclick="goBack()" style="display: none;">Back</button>
+                    <button class="btn btn-primary" id="nextBtn" onclick="goNext()" disabled>Next</button>
+                </div>
+
+                <div class="cal-branding">
+                    <strong>towingforward.com</strong>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <script>
+        // Calendar and scheduling logic
+        let currentStep = 1;
+        let selectedDate = null;
+        let selectedTime = null;
+        let currentMonth = 6; // July (0-indexed)
+        let currentYear = 2025;
+        let duration = '12h';
+
+        const months = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+
+        const dayHeaders = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+
+        function generateCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            const calendarTitle = document.getElementById('calendarTitle');
+            
+            calendarTitle.textContent = `${months[currentMonth]} ${currentYear}`;
+            
+            // Clear previous calendar
+            calendarGrid.innerHTML = '';
+            
+            // Add day headers
+            dayHeaders.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.textContent = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDayOfWeek = (firstDay.getDay() + 6) % 7; // Convert Sunday=0 to Monday=0
+            
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < startingDayOfWeek; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day disabled';
+                calendarGrid.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                const currentDate = new Date(currentYear, currentMonth, day);
+                const isToday = currentDate.toDateString() === today.toDateString();
+                
+                if (isToday) {
+                    dayElement.classList.add('today');
+                }
+                
+                // Make past dates disabled
+                if (currentDate < today && !isToday) {
+                    dayElement.classList.add('disabled');
+                } else {
+                    dayElement.addEventListener('click', () => selectDate(day));
+                }
+                
+                calendarGrid.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(day) {
+            // Remove previous selection
+            document.querySelectorAll('.calendar-day.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Add selection to clicked date
+            event.target.classList.add('selected');
+            
+            selectedDate = new Date(currentYear, currentMonth, day);
+            generateTimeSlots();
+            updateNextButton();
+        }
+
+        function generateTimeSlots() {
+            const timeList = document.getElementById('timeList');
+            timeList.innerHTML = '';
+            
+            const timeSlots = duration === '12h' ? 
+                ['12:30pm', '12:45pm', '3:30pm', '3:45pm', '4:00pm', '4:15pm', '4:30pm', '4:45pm', '5:00pm'] :
+                ['08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00'];
+            
+            timeSlots.forEach(time => {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = time;
+                timeSlot.addEventListener('click', () => selectTime(time, timeSlot));
+                timeList.appendChild(timeSlot);
+            });
+        }
+
+        function selectTime(time, element) {
+            // Remove previous selection
+            document.querySelectorAll('.time-slot.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Add selection to clicked time
+            element.classList.add('selected');
+            selectedTime = time;
+            updateNextButton();
+        }
+
+        function selectDuration(newDuration) {
+            duration = newDuration;
+            
+            // Update button states
+            document.querySelectorAll('.duration-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (selectedDate) {
+                generateTimeSlots();
+            }
+        }
+
+        function previousMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar();
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar();
+        }
+
+        function goNext() {
+            if (currentStep === 1) {
+                // Go to form step
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                document.getElementById('backBtn').style.display = 'inline-block';
+                document.getElementById('nextBtn').textContent = 'Confirm';
+                document.getElementById('nextBtn').disabled = true;
+                currentStep = 0;
+                
+                // Add form validation
+                const form = document.getElementById('demoForm');
+                const inputs = form.querySelectorAll('input[required]');
+                inputs.forEach(input => {
+                    input.addEventListener('input', validateForm);
+                });
+                validateForm();
+                
+            } else if (currentStep === 2) {
+                // Go to confirmation step
+                const formData = new FormData(document.getElementById('demoForm'));
+                showConfirmation(formData);
+                
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+                document.getElementById('backBtn').style.display = 'none';
+                document.getElementById('nextBtn').style.display = 'none';
+                currentStep = 3;
+            }
+        }
+
+        function goBack() {
+            if (currentStep === 2) {
+                // Go back to calendar
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step1').style.display = 'flex';
+                document.getElementById('backBtn').style.display = 'none';
+                document.getElementById('nextBtn').textContent = 'Next';
+                updateNextButton();
+                currentStep = 1;
+            }
+        }
+
+        function validateForm() {
+            const form = document.getElementById('demoForm');
+            const requiredInputs = form.querySelectorAll('input[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                }
+            });
+            
+            document.getElementById('nextBtn').disabled = !isValid;
+        }
+
+        function updateNextButton() {
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentStep === 1) {
+                nextBtn.disabled = !(selectedDate && selectedTime);
+            }
+        }
+
+        function showConfirmation(formData) {
+            const meetingDetails = document.getElementById('meetingDetails');
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = selectedDate.toLocaleDateString('en-US', dateOptions);
+            
+            meetingDetails.innerHTML = `
+                <div class="detail-row">
+                    <div class="detail-label">What</div>
+                    <div class="detail-value">15 Min Intro Meeting between ${formData.get('userName')} and gf</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">When</div>
+                    <div class="detail-value">${formattedDate}<br>${selectedTime} (Eastern Daylight Time)</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Who</div>
+                    <div class="detail-value">${formData.get('userName')} <span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem;">Host</span><br>${formData.get('email')}<br><br>TowingForward<br>TowingForword.com</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Where</div>
+                    <div class="detail-value">Google Meet 🔗</div>
+                </div>
+                ${formData.get('additionalNotes') ? `
+                <div class="detail-row">
+                    <div class="detail-label">Additional notes</div>
+                    <div class="detail-value">${formData.get('additionalNotes')}</div>
+                </div>
+                ` : ''}
+                <div class="detail-row">
+                    <div class="detail-label">Phone Number</div>
+                    <div class="detail-value">+ ${formData.get('phoneNumber')}</div>
+                </div>
+            `;
+        }
+
+        // Load header from index.html
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const header = doc.querySelector('header.site-header');
+                if (header) {
+                    document.getElementById('header-container').innerHTML = header.outerHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading header:', error);
+            });
+
+        // Load footer from index.html
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const footer = doc.querySelector('footer.site-footer');
+                if (footer) {
+                    document.getElementById('footer-container').innerHTML = footer.outerHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading footer:', error);
+            });
+
+        // Header scroll functionality (needs to be added after header loads)
+        setTimeout(() => {
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+            let scrollThreshold = 100;
+
+            if (header) {
+                window.addEventListener('scroll', function () {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    // Add scrolled class after scrolling past threshold
+                    if (scrollTop > scrollThreshold) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+
+                    // Hide/show header based on scroll direction
+                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                        // Scrolling down
+                        header.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up
+                        header.classList.remove('header-hidden');
+                    }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+            }
+        }, 1000); // Wait 1 second for header to load
+
+        // Initialize calendar on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCalendar();
+            generateTimeSlots();
+        });
+    </script>
+
+</body>
+</html>

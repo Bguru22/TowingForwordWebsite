@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Features - Towing Forward</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            /* Background image styling */
+            background-image: url('assets/homepage-icons/heroimage.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Optional: Add overlay for better text readability */
+            /* background-color: rgba(255, 255, 255, 0.95); */
+            background-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 4rem 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+            color: black;
+            /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); */
+
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+          
+            z-index: -1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Section Underlines */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 4px;
+            background:linear-gradient(90deg, #ED1D23, #02008C);
+        }
+
+        /* Essential Features Section */
+        .features-section {
+            margin-bottom: 5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card.purple {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .feature-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .feature-card.red {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+
+        .feature-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-price {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .feature-price .currency {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .feature-description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            opacity: 0.95;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .feature-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Advanced Features Section */
+        .advanced-features {
+            margin-bottom: 5rem;
+        }
+
+        .advanced-features .section-title::after {
+            background: linear-gradient(90deg, #ED1D23, #02008C);
+        }
+
+        .advanced-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .advanced-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .advanced-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .advanced-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        /* Updated red icon styling for image */
+        .advanced-icon.red {
+            background: #e74c3c;
+            overflow: hidden;
+            padding: 0.8rem;
+        }
+
+        .advanced-icon.red img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .advanced-icon.blue {
+            background: #3498db;
+        }
+
+        .advanced-icon.orange {
+            background: #f39c12;
+        }
+
+        .advanced-icon.green {
+            background: #27ae60;
+        }
+
+        .advanced-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+
+        .advanced-content p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* Business Types Section */
+        .business-types {
+            margin-bottom: 2rem;
+        }
+
+        .business-types .section-title::after {
+            background: linear-gradient(90deg, #ED1D23, #02008C);
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .type-card {
+            position: relative;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .type-card:hover {
+            transform: scale(1.03);
+        }
+
+        .type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+        }
+
+        .type-card.restaurants {
+            background: url('assets/tailored-images/ImageT1.png') center/cover;
+        }
+
+        .type-card.auto-repair {
+            background: url('assets/tailored-images/ImageT2.png') center/cover;
+        }
+
+        .type-card.towing {
+            background: url('assets/tailored-images/ImageT3.png') center/cover;
+        }
+
+        .type-card.plumbing {
+            background: url('assets/tailored-images/ImageT4.png') center/cover;
+        }
+
+        .type-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            color: white;
+        }
+
+        .type-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .type-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: white;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        padding: 1rem 1.2rem;
+
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+            text-decoration: none;
+            text-align: center;
+            width: 200px; /* decreased width */
+    white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advanced-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-section {
+                padding: 4rem 1rem;
+            }
+
+            .advanced-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1>Powerful Tools to<br>Transform Your Business</h1>
+                <p>Comprehensive solutions designed to streamline operations, enhance customer experience, and drive growth for businesses of all sizes.</p>
+            </section>
+
+            <!-- Essential Features Section -->
+            <section class="features-section">
+                <div class="section-header">
+                    <h2 class="section-title">Essential Features for Every Business</h2>
+                    <p class="section-subtitle">Choose the perfect plan that fits your business needs and budget</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card purple">
+                        <div class="feature-header">
+                            <div>
+                                <h3 class="feature-title">More Miss a Call</h3>
+                                <div class="feature-price">$29<span class="currency">/month</span></div>
+                            </div>
+                        </div>
+                        <p class="feature-description">Never lose a potential customer again with our 24/7 call handling service that ensures every call is answered professionally.</p>
+                        <ul class="feature-list">
+                            <li>24/7 Call Answering</li>
+                            <li>Professional Scripts</li>
+                            <li>Call Recording</li>
+                            <li>Instant Notifications</li>
+                            <li>Basic Analytics</li>
+                        </ul>
+                        <a href="#" class="feature-btn">Choose Plan</a>
+                    </div>
+
+                    <div class="feature-card blue">
+                        <div class="feature-header">
+                            <div>
+                                <h3 class="feature-title">Smart Appointment Booking</h3>
+                                <div class="feature-price">$49<span class="currency">/month</span></div>
+                            </div>
+                        </div>
+                        <p class="feature-description">Intelligent scheduling system that automatically books appointments and manages your calendar seamlessly.</p>
+                        <ul class="feature-list">
+                            <li>Automated Scheduling</li>
+                            <li>Calendar Integration</li>
+                            <li>SMS Reminders</li>
+                            <li>Rescheduling Options</li>
+                            <li>Team Management</li>
+                        </ul>
+                        <a href="#" class="feature-btn">Choose Plan</a>
+                    </div>
+
+                    <div class="feature-card red">
+                        <div class="feature-header">
+                            <div>
+                                <h3 class="feature-title">Secure Payment Processing</h3>
+                                <div class="feature-price">$69<span class="currency">/month</span></div>
+                            </div>
+                        </div>
+                        <p class="feature-description">Complete payment solution with secure processing, invoicing, and financial reporting capabilities.</p>
+                        <ul class="feature-list">
+                            <li>Secure Transactions</li>
+                            <li>Multiple Payment Methods</li>
+                            <li>Automated Invoicing</li>
+                            <li>Financial Reports</li>
+                            <li>PCI Compliance</li>
+                        </ul>
+                        <a href="#" class="feature-btn">Choose Plan</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Features Section -->
+            <section class="advanced-features">
+                <div class="section-header">
+                    <h2 class="section-title">Advanced Features to Elevate<br>Your Service</h2>
+                    <p class="section-subtitle">Take your business to the next level with our premium features and integrations</p>
+                </div>
+
+                <div class="advanced-grid">
+                    <div class="advanced-card">
+                        <div class="advanced-icon red">
+                            <!-- Replace with your image path -->
+                            <img src="assets/feature-icons/Vector1.png" alt="Call Routing Icon">
+                        </div>
+                        <div class="advanced-content">
+                            <h3>Intelligent Call Routing</h3>
+                            <p>Advanced call distribution system that routes calls to the right department or available agent based on predefined rules and real-time availability.</p>
+                        </div>
+                    </div>
+
+                    <div class="advanced-card">
+                        <div class="advanced-icon blue">
+                             <img src="assets/feature-icons/Vector2.png" alt="Call Routing Icon">
+                        </div>
+                        <div class="advanced-content">
+                            <h3>Business Intelligence</h3>
+                            <p>Comprehensive analytics and reporting tools that provide insights into call patterns, customer behavior, and business performance metrics.</p>
+                        </div>
+                    </div>
+
+                    <div class="advanced-card">
+                        <div class="advanced-icon orange"> 
+                            <img src="assets/feature-icons/Vector3.png" alt="Call Routing Icon">
+                        </div>
+                        <div class="advanced-content">
+                            <h3>Natural Conversations</h3>
+                            <p>AI-powered conversational interface that handles customer inquiries naturally, providing personalized responses and seamless interactions.</p>
+                        </div>
+                    </div>
+
+                    <div class="advanced-card">
+                        <div class="advanced-icon green">
+                             <img src="assets/feature-icons/Vector4.png" alt="Call Routing Icon">
+                        </div>
+                        <div class="advanced-content">
+                            <h3>Custom Integrations</h3>
+                            <p>Seamless integration with your existing business tools, CRM systems, and third-party applications to create a unified workflow.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business Types Section -->
+            <section class="business-types">
+                <div class="section-header">
+                    <h2 class="section-title">Tailored for Your Business</h2>
+                    <p class="section-subtitle">Specialized solutions designed for different industry needs and requirements</p>
+                </div>
+
+                <div class="types-grid">
+                    <div class="type-card restaurants">
+                        <div class="type-content">
+                            <h3 class="type-title">Restaurants</h3>
+                        </div>
+                    </div>
+
+                    <div class="type-card auto-repair">
+                        <div class="type-content">
+                            <h3 class="type-title">Auto Repair</h3>
+                        </div>
+                    </div>
+
+                    <div class="type-card towing">
+                        <div class="type-content">
+                            <h3 class="type-title">Towing Services</h3>
+                        </div>
+                    </div>
+
+                    <div class="type-card plumbing">
+                        <div class="type-content">
+                            <h3 class="type-title">Plumbing & HVAC</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="cta-button">Explore All Industries</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer will be loaded here -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript to load header and footer -->
+    <script>
+        // Load header from index.html
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const header = doc.querySelector('header.site-header');
+                if (header) {
+                    document.getElementById('header-container').innerHTML = header.outerHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading header:', error);
+            });
+
+        // Load footer from index.html
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const footer = doc.querySelector('footer.site-footer');
+                if (footer) {
+                    document.getElementById('footer-container').innerHTML = footer.outerHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading footer:', error);
+            });
+
+        // Header scroll functionality (needs to be added after header loads)
+        setTimeout(() => {
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+            let scrollThreshold = 100;
+
+            if (header) {
+                window.addEventListener('scroll', function () {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    // Add scrolled class after scrolling past threshold
+                    if (scrollTop > scrollThreshold) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+
+                    // Hide/show header based on scroll direction
+                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                        // Scrolling down
+                        header.classList.add('header-hidden');
+                    } else {
+                        // Scrolling up
+                        header.classList.remove('header-hidden');
+                    }
+
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+            }
+        }, 1000); // Wait 1 second for header to load
+    </script>
+</body>
+</html>
