@@ -1,70 +1,81 @@
-# 🚗 TowingForwardWebsite
+🚛 Towing Forward Website
+A professional, responsive multi-page website built using pure HTML, CSS, and JavaScript, designed for towing service providers. Each page highlights specific service details, pricing, features, and contact options.
 
-TowingForwardWebsite is a modern, responsive website built using **HTML**, **CSS**, and **JavaScript**. It is designed to showcase towing services, interactive features, AI tool pricing, and customer engagement with smooth animations and integrated forms.
+✨ Key Features
+🏠 Multi-Page Website
 
-## 🌟 Key Features
+Home Page – Overview of services with a hero section and call-to-action.
 
-- 🔄 Smooth **animations** for engaging UI
-- 📩 **Contact form** for real-time inquiries
-- ⚙️ **Feature form** for users to suggest service improvements
-- 🧠 **AI Tool Pricing** page with dynamic layout
-- 🤝 **Customer Testimonials** to build trust
-- 🔊 Audio player using custom JavaScript
-- 💬 **FAQs** powered by interactive JS
-- 📱 Fully responsive design for mobile and desktop
+Features Page – Lists all towing service features with images/icons.
 
----
+Pricing Page – Clear service pricing section.
 
-## 📁 Folder Structure
+Integration Page – Describes integration options (if applicable).
 
-TowingForwardWebsite/
-│
-├── .vscode/ # VS Code settings (optional)
-├── assets/ # Static assets like images
-├── audiofiles/ # Audio files used in the project
-├── Homepagecss/ # Homepage-specific CSS
-├── Homepages/ # Alternate homepage versions or sections
-├── jsfiles/ # All JavaScript logic
-│ ├── audio-player.js
-│ ├── audio.js
-│ ├── faq.js
-│ └── homepage.js
-│
-├── contact.html # Contact page with form
-├── feature.html # Features form section
-├── index.html # Main landing page
-├── index.css # Global CSS styles
-├── integration.html # Integration form section
-└── pricing.html # Pricing for AI tools
+Contact Us Page – Contact form, company contact details, and Google Maps (optional).
 
+🧭 Navigation
 
----
+Fully functional header navigation linking to:
 
-## 🚀 How to Use
+Home
 
-### Option 1: Local Development
+Features
 
-1. **Clone this repo**:
-   ```bash
-   git clone https://github.com/your-username/TowingForwardWebsite.git
+Pricing
 
-📦 Tech Stack
-HTML5 — Markup for structure
+Integrations
 
-CSS3 — Styling and animations
+Contact Us
 
-JavaScript (Vanilla) — For interactivity
+Navigation is responsive and works across all devices.
 
-🛠️ Future Enhancements
-Backend integration with Node.js or Firebase
+📱 Mobile Responsive Design
 
-Email integration for contact form
+Mobile-first design using CSS media queries.
 
-Light/Dark mode toggle
+Navigation menu adapts on smaller screens.
 
-Progressive Web App (PWA) support
+Pages maintain clean layouts on phones, tablets, and desktops.
 
-🙌 Contact
-Made by Guru Hiremath
-📧 Email: hiremathguru505@gmail.com
+🎨 Modern UI
 
+Clean and professional layout.
+
+Consistent theme, fonts, and colors across all pages.
+
+Smooth CSS hover effects and transitions.
+
+⚡ Lightweight & Fast
+
+Built using pure HTML, CSS, and JavaScript.
+
+No external frameworks.
+
+Optimized images and minimal scripts.
+
+🔧 Technologies Used
+HTML5 (Multiple Pages)
+
+CSS3 (Flexbox, Grid, Media Queries)
+
+Vanilla JavaScript (For interactivity like menus, forms, etc.)
+
+🚀 Live Demo
+🔗 View Live Website
+
+📥 Installation & Running Locally
+bash
+Copy
+Edit
+# 1. Clone the repository
+git clone https://github.com/YourGitHubUsername/towing-forward-website.git
+
+# 2. Navigate into the project folder
+cd towing-forward-website
+
+# 3. Open index.html (and other HTML files) directly in your browser
+✅ No dependencies or build steps required.
+
+📄 License
+This project is open-source under the MIT License – free to use and modify.
